@@ -4,23 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/41d4b3454d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="tracker.css">
-    <title>Document</title>
+    <title>Tracker</title>
 </head>
 <body>
   <main>
-    <header>
-        <div>
-            <h2>Inventory</h2>
-            <div></div>
+    <header class="header">
+        <div class="headerOne">
+            <h2 class="inventory">Inventory</h2>
+            <div><i class="fa-regular fa-user"></i></div>
         </div>
-        <div></div>
-        <div></div>
-    </header>
-    <div>
+        <form class="headerForm">
+          <div class="headerFirstChild heads active" id="headerFirstChild">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="headerInput
+            " placeholder="Search by character">
+          </div>
 
+         <div class="headerSecondChild heads" id="headerSecondChild">
+            <i class="fa-solid fa-plus"></i>
+            <input type="text" class="headerInput" placeholder="add your products">
+         </div>
+        </form>
+
+        <!-- tab section -->
+        <ul class="tabs-parent">
+          <li class="tab active one" data-target="#homePage" data-head ="#headerFirstChild"><i class="fa-solid fa-house" ></i>
+          <li class="tab " data-target="#filePage" data-head = '#headerSecondChild'><i class="fa-solid fa-circle-plus"></i></li>
+          <li class="tab "><i class="fa-solid fa-chart-bar"></i></li>
+        </ul>
+    </header>
+      <!-- main section -->
+    <div >
+      <section class="home-page section active" id="homePage">
+       <div class="items">
+          <div ><i class="fa-solid fa-store-slash"></i>
+          </div>
+
+          <div class="items-menu">
+            <h3 class="items-name">betty butter</h3>
+            <i class="fa-solid fa-circle-info"></i>
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+       <div class="items"></div>
+       <div class="items"></div>
+       <div class="items"></div>
+      </section>
+
+
+      <section class="file-page section" id="filePage">
+
+      </section>
+      <section class="section"></section>
     </div>
-    
-  </main>  
+  </main>
+  <script src="tracker.js"></script>  
 </body>
 </html>
