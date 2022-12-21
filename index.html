@@ -26,13 +26,24 @@
             <i class="fa-solid fa-plus"></i>
             <input type="text" class="headerInput" placeholder="add your products">
          </div>
+
+         <div class="headerThirdChild heads" id="headerThirdChild">
+          <i class="fa-solid fa-magnifying-glass third"></i>
+          <input type="text" class="headerInput third
+          "placeholder="Search by character">
+        </div>
+         </div>
         </form>
 
         <!-- tab section -->
-        <ul class="tabs-parent">
-          <li class="tab active one" data-target="#homePage" data-head ="#headerFirstChild"><i class="fa-solid fa-house" ></i>
-          <li class="tab " data-target="#filePage" data-head = '#headerSecondChild'><i class="fa-solid fa-circle-plus"></i></li>
-          <li class="tab "><i class="fa-solid fa-chart-bar"></i></li>
+        <ul id="tabs-parent" class="tabs-parent">
+          <li class="tab active one" data-target="#homePage" data-head ="#headerFirstChild">
+            <i class="fa-solid fa-house" data-target="#homePage" data-head ="#headerFirstChild"></i>
+          </li>
+
+          <li class="tab" data-target="#filePage" data-head = "#headerSecondChild"><i class="fa-solid fa-circle-plus fam" data-target="#filePage" data-head = "#headerSecondChild"></i></li>
+
+          <li class="tab" data-target="#detailsPage" data-head="#headerThirdChild"><i class="fa-solid fa-chart-bar"  data-target="#detailsPage" data-head="#headerThirdChild"></i></li>
         </ul>
     </header>
       <!-- main section -->
@@ -53,11 +64,38 @@
        <div class="items"></div>
       </section>
 
-
+      <!-- file addition section -->
       <section class="file-page section" id="filePage">
+        <form class="file-addition-page">
+         <div class="name-parent">
+          <label for="fileName" class="label-name">product Name</label>
+          <input type="text" id="fileName" class="file-name">
+         </div>
 
+          <div class="description-parent">
+            <label for="fileDescription" class="label-description">product description</label>
+            <textarea id="fileDescription" class="file-description" placeholder="write a detailed description">ip</textarea>
+          </div>
+
+          <div class="product-parent">
+            <label for="file" class="label-file"><i class="fa-solid fa-plus"></i>
+              <input type="file" id="file" class="file" accept="image/jpg, image/png">
+            </label>
+            
+            <div class="display">
+
+            </div>
+          </div>
+          <button class="add-btn">Add to Home</button>
+        </form>
       </section>
-      <section class="section"></section>
+      <section class="details-page section" id ="detailsPage">
+      </section>
+      <hr class="dash">
+      <footer class="footer">
+        <h3 class="stay-msg">Stay on track with your hands</h3>
+        <h4 class="create-msg">A creation of Leo</h4>
+      </footer>
     </div>
   </main>
   <script src="tracker.js"></script>  

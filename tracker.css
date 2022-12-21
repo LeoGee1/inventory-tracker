@@ -9,8 +9,8 @@ body, h2, p, li, ul{
 body {
     background-color: #efe9eb;
     min-width: 265px;
-
 }
+
 /* font styles */
 @font-face {
     font-family: 'PJS';
@@ -25,13 +25,11 @@ body {
     src: url('fonts/PlayfairDisplay-Italic.ttf');
 }
 /* mobile syles */
-.main {
-    /* min-width: 300px; */
-}
 .header {
     font-family: 'PJS';
     background-image: linear-gradient(#e35384, #6a41ba);
     color: white;
+
 }
 .headerOne {
     padding: 40px 15px 10px 15px;
@@ -144,18 +142,106 @@ body {
     padding: 5px;
     color: #120b9c;
 }
-.remark {
-    width: none;
-    margin: 10px 10px auto;
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'PFD-italy';
-    font-size: 14px;
-    align-self: ;
-    flex-basis: 250px;
+    font-size: 12px;
     font-weight: bolder;
     color: rgb(59, 58, 58);
+    
+}
+.dash {
+    margin: 15px 30px;
+    font-size: large;
+    color: rgb(59, 58, 58);
+}
+.stay-msg, .create-msg {
+    margin: 5px
+}
+.create-msg {
+    font-size: 12px;
+    background: -webkit-linear-gradient(#f0407a, #350596);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* file addition page  */
+.file-addition-page {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-family: 'PJS';
+}
+.name-parent, .description-parent,.product-parent {
+    font-size: 12px;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+}
+
+.file-name {
+    height: 25px;
+    outline: none;
+    background: linear-gradient(#efe9eb, #efe9eb) padding-box,
+                linear-gradient(to right, #f0407a, #350596)border-box;
+    border-radius: 5px;
+    border: 2px solid transparent;
+}
+
+.file-description {
+    height: 65px;
+    outline: none;
+    background: linear-gradient(#efe9eb, #efe9eb) padding-box,
+                linear-gradient(to right, #f0407a, #350596)border-box;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    resize: none;
+}
+.file-description::placeholder {
+    font-family: 'Sans-serif';
+}
+input[type='file'] {
+    color: rgba(0, 0, 0, 0)
+  }
+  .product-parent {
+    align-items: center;
+  }
+  .label-file {
+    padding: 60px 90px;
+    border: 1px dotted #350596;
+  }
+  .fa-plus {
+    padding: 10px;
+    font-size: 16px;
+  }
+.file {
+    display: none;
+}
+.add-btn {
+    width: 200px;
+    margin: 0 auto;
+    padding: 15px 0;
+    font-family: 'PJS';
+    background: grey;
+    border: 1px solid transparent;
+    color: white;
+    
+}
+.add-btn:hover {
+    background-color: rgb(49, 45, 45);
+}
+.add-btn:active {
+    background-color: #350596;
+}
+
+
+
+
 .headerSecondChild {
     display: flex;
     background-color: #fefefe;
@@ -168,6 +254,26 @@ body {
     padding-right: 10px;
     color: grey;
 }
+
+/* file details page */
+.headerThirdChild {
+    display: flex;
+    /* background-color: #fefefe; */
+    border: 2px solid #fefefe;
+    justify-content: flex-start;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 2px;
+}
+
+.third {
+    background-color: inherit;
+    color: #fefefe;
+}
+.third::placeholder {
+    color: #fefefe;
+}
+
 /* action designs and styling */
 .section {
     display: none;

@@ -1,4 +1,4 @@
-const tabs = document.querySelector('.tabs-parent');
+const tabs = document.querySelector('#tabs-parent');
 const sections = document.querySelectorAll('.section');
 const heads = document.querySelectorAll('.heads')
 const tabbed = document.querySelectorAll('.tab')
@@ -13,9 +13,18 @@ tabs.addEventListener('click', (e) => {
                 section.classList.remove('active')
             }
         })
+    } else if(e.target.tagName === 'I') {
+        const targetSection = document.querySelector(e.target.dataset.target);
+        sections.forEach((section) => {
+            if (section === targetSection) {
+                section.classList.add('active');
+            }else {
+                section.classList.remove('active')
+            }
+        })
     }
-
 }) 
+
 
 // this is also to switch tabs upon clicking action for the heads
 tabs.addEventListener ('click', (e) => {
@@ -28,7 +37,17 @@ tabs.addEventListener ('click', (e) => {
                 head.classList.remove('active')
             }
         })
+    }else if (e.target.tagName === 'I') {
+        const targetHead = document.querySelector(e.target.dataset.head);
+        heads.forEach((head) => {
+            if (head === targetHead) {
+                head.classList.add('active')
+            } else {
+                head.classList.remove('active')
+            }
+        })
     }
+
 })
 
 //this is to make the tab bottom border be visible on click
