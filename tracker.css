@@ -1,5 +1,5 @@
 /* base styles */
-body, h2, p, li, ul{
+body, h2, p, li, ul, a{
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -29,7 +29,10 @@ body {
     font-family: 'PJS';
     background-image: linear-gradient(#e35384, #6a41ba);
     color: white;
-
+    position: relative;
+    /* height: 163px; */
+    position: sticky;
+    top: 0;
 }
 .headerOne {
     padding: 40px 15px 10px 15px;
@@ -45,14 +48,6 @@ body {
 .fa-user {
    font-size: 15px;
 }
-/* .headerForm {
-    display: flex;
-    background-color: #fefefe;
-    justify-content: flex-start;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 2px;
-} */
 .headerFirstChild {
     display: flex;
     background-color: #fefefe;
@@ -112,26 +107,40 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.sample-one {
+    background-image: url('images/beauty\ product.png');
+}
+.sample-two {
+    background-image: url('images/colour.jpg');
+}
+.sample-three {
+    background-image: url('images/air.jpg');
+}
+.sample-four {
+    background-image: url('images/apple.jpg');
 }
 .items-menu {
-    /* border: 1px solid red; */
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: space-between;
     margin: 0 5px;
     gap: 5px;
+  
 }
 .items-name {
     margin: 0 auto;
     flex-basis: 120px;
     font-size: 12px;
-    color: grey;
     font-family: 'PJS';
     font-weight: bolder;
     background: -webkit-linear-gradient(#e35384, #6a41ba);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 .fa-circle-info, .fa-xmark {
     padding: 5px;
     font-size: 18px;
@@ -141,6 +150,13 @@ body {
 .fa-store-slash {
     padding: 5px;
     color: #120b9c;
+}
+.fa-store-slash:hover {
+    background-color: #efe9eb;
+}
+.fa-circle-info:hover, .fa-xmark:hover {
+    color: #fefefe;
+    background-color: #afafaf93;
 }
 .footer {
     display: flex;
@@ -184,7 +200,7 @@ body {
     width: 250px;
 }
 
-.file-name {
+.product-name {
     height: 25px;
     outline: none;
     background: linear-gradient(#efe9eb, #efe9eb) padding-box,
@@ -193,7 +209,7 @@ body {
     border: 2px solid transparent;
 }
 
-.file-description {
+.product-description {
     height: 65px;
     outline: none;
     background: linear-gradient(#efe9eb, #efe9eb) padding-box,
@@ -202,7 +218,7 @@ body {
     border: 2px solid transparent;
     resize: none;
 }
-.file-description::placeholder {
+.product-description::placeholder {
     font-family: 'Sans-serif';
 }
 input[type='file'] {
@@ -214,6 +230,9 @@ input[type='file'] {
   .label-file {
     padding: 60px 90px;
     border: 1px dotted #350596;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   .fa-plus {
     padding: 10px;
@@ -238,16 +257,12 @@ input[type='file'] {
 .add-btn:active {
     background-color: #350596;
 }
-
-
-
-
 .headerSecondChild {
     display: flex;
     background-color: #fefefe;
     justify-content: flex-start;
-    padding: 10px;
     margin: 5px;
+    padding: 1px;
     border-radius: 2px;
 }
 .fa-plus {
@@ -261,7 +276,7 @@ input[type='file'] {
     /* background-color: #fefefe; */
     border: 2px solid #fefefe;
     justify-content: flex-start;
-    padding: 10px;
+    padding: 8px;
     margin: 5px;
     border-radius: 2px;
 }
