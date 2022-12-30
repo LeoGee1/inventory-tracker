@@ -55,46 +55,44 @@
     <div >
       <section class="home-page section active" id="homePage">
        <div class="items sample-one">
-          <div ><i class="fa-solid fa-store-slash"></i>
+          <div class="slash-parent"><i class="fa-solid fa-store-slash"></i>
           </div>
-
           <div class="items-menu">
-            <a href=""><h3 class="items-name">Sample Product</h3></a>
+            <h3 class="items-name">Sample Product</h3>
             <i class="fa-solid fa-circle-info"></i>
             <i class="fa-solid fa-xmark"></i>
           </div>
         </div>
 
-       <div class="items sample-two">
-        <div ><i class="fa-solid fa-store-slash"></i>
-        </div>
-
-        <div class="items-menu">
-          <a href=""><h3 class="items-name">Sample Product</h3></a>
-          <i class="fa-solid fa-circle-info"></i>
-          <i class="fa-solid fa-xmark"></i>
+        <div class="items sample-two">
+          <div  class="slash-parent"><i class="fa-solid fa-store-slash"></i>
+          </div>
+          <div class="items-menu">
+            <h3 class="items-name">Sample Product</h3>
+            <i class="fa-solid fa-circle-info"></i>
+            <i class="fa-solid fa-xmark"></i>
         </div>
        </div>
 
        <div class="items sample-three">
-        <div ><i class="fa-solid fa-store-slash"></i>
-        </div>
+          <div class="slash-parent"><i class="fa-solid fa-store-slash"></i>
+          </div>
 
-        <div class="items-menu">
-          <a href=""><h3 class="items-name">Sample Product</h3></a>
-          <i class="fa-solid fa-circle-info"></i>
-          <i class="fa-solid fa-xmark"></i>
+          <div class="items-menu">
+            <h3 class="items-name">Sample Product</h3>
+            <i class="fa-solid fa-circle-info"></i>
+            <i class="fa-solid fa-xmark"></i>
         </div>
        </div>
 
        <div class="items sample-four">
-        <div ><i class="fa-solid fa-store-slash"></i>
-        </div>
+          <div class="slash-parent"><i class="fa-solid fa-store-slash"></i>
+          </div>
 
-        <div class="items-menu">
-          <a href=""><h3 class="items-name">Sample Product</h3></a>
-          <i class="fa-solid fa-circle-info"></i>
-          <i class="fa-solid fa-xmark"></i>
+          <div class="items-menu">
+            <h3 class="items-name">Sample Product</h3>
+            <i class="fa-solid fa-circle-info"></i>
+            <i class="fa-solid fa-xmark"></i>
         </div>
        </div>
       </section>
@@ -123,8 +121,19 @@
 
       <!-- file details section -->
       <section class="details-page section" id ="detailsPage">
-        <div class="big-box">
+        <div class="big-box" id="bigBox">
+          <div class="left">
+            <div class="imagery"></div>
+            <h3 class="name">sample product</h3>
+          </div>
 
+          <div class="right">
+            <h3 class="description">This is a very high quality lotion that is mainly focused on softening and brightening the human skin, making sure there is no alteration in natural composure</h3>
+            <div class="right-below">
+              <div class="quantity">Quantity</div>
+              <div class="counter">1</div>
+            </div>
+          </div>
         </div>
       </section>
       <hr class="dash">
@@ -134,6 +143,7 @@
       </footer>
     </div>
   </main>
-  <script src="tracker.js"></script>  
+  <script src="tracker.js"></script>
+  <script src="trackerdot.js"></script>
 </body>
 </html>

@@ -2,6 +2,8 @@ const tabs = document.querySelector('#tabs-parent');
 const sections = document.querySelectorAll('.section');
 const heads = document.querySelectorAll('.heads')
 const tabbed = document.querySelectorAll('.tab')
+const list = document.querySelector('#homePage')
+const detailsList = document.querySelector('#detailsPage')
 // this is to swicth tabs uopn clicking action for the section
 tabs.addEventListener('click', (e) => {
     if (e.target.tagName === 'LI') {
@@ -73,33 +75,118 @@ preview.addEventListener('change', function() {
     reader.readAsDataURL(this.files[0]);
 });
 
+displayImage.style.backgroundImage = `url(${uploaded_image})`
+
+//this is to specify what excatly gets added to the dom
+const amountConditions = () => {
+    const nameValue = document.querySelector('#productName').value.trim();
+    const descriptionValue = document.querySelector('#productDescription').value.trim();
+    
+}
+
 // this is to add product image, product name to the home page
 const addBtn = document.querySelector('#addBtn');
 
 
-addBtn.addEventListener('click', (e) => {
+const plusItemsToPage = (e) => {
     e.preventDefault();
-    const NameValue = document.querySelector('#productName').Value.trim()
-    const descriptionValue = document.querySelector('#productDescription').value.trim()
-    if (NameValue.length === 0 || nameValue.length > 15) {
+
+    const nameValue = document.querySelector('#productName').value.trim();
+    const descriptionValue = document.querySelector('#productDescription').value.trim();
+    if (nameValue.length === 0 || nameValue.length > 15) {
         return;
-    } else if (DescriptionValue.length === 0 || descriptionValue.length > 200) {
+    } else if (descriptionValue.length === 0 || descriptionValue.length > 200) {
         return
-    }else {
+    }else if (displayImage.style.backgroundImage !== ''
+    ){
         // create elements
         const items = document.createElement('div');
         const upper = document.createElement('div');
-        const noItem = document.createElement('i');
+        const slashItem = document.createElement('i');
         const itemsMenu = document.createElement('div');
-        const itemName = document.createElement('h3');
+        const itemsName = document.createElement('h3');
         const info = document.createElement('i');
         const cancel = document.createElement('i');
 
         //add text contents
+        itemsName.textContent = nameValue.toLowerCase();
 
         // create classes
+        items.classList.add('items');
+        slashItem.classList.add('fa-solid', 'fa-store-slash');
+        itemsMenu.classList.add('items-menu');
+        itemsName.classList.add('items-name');
+        upper.classList.add('slash-parent');
+        info.classList.add('fa-solid', 'fa-circle-info');
+        cancel.classList.add('fa-solid', 'fa-xmark');
+
+        //append elements to elements
+        upper.appendChild(slashItem);
+        itemsMenu.appendChild(itemsName);
+        itemsMenu.appendChild(info);
+        itemsMenu.appendChild(cancel);
+        items.appendChild(upper);
+        items.appendChild(itemsMenu);
+        list.appendChild(items);
+
+        items.style.backgroundImage =  `url(${uploaded_image})`
     }
-})
+}
+const plusItemsToPageDetails = () => {
+    const nameValue = document.querySelector('#productName').value.trim();
+    const descriptionValue = document.querySelector('#productDescription').value.trim();
+    if (nameValue.length === 0 || nameValue.length > 15) {
+        return;
+    } else if (descriptionValue.length === 0 || descriptionValue.length > 200) {
+        return
+    }else if (displayImage.style.backgroundImage !== ''
+    ) {
+        // create elements
+
+        const box = document.createElement('div');
+        const left = document.createElement('div');
+        const imagery = document.createElement('div');
+        const name = document.createElement('h3');
+        const right = document.createElement('div');
+        const description =  document.createElement('h3');
+        const rightBelow =  document.createElement('div');
+        const quantity = document.createElement('div');
+        const counter = document.createElement('div');
+
+        //add text contents
+        name.textContent = nameValue.toLowerCase();
+        description.textContent = descriptionValue.toLowerCase();
+        quantity.textContent = 'quantity'
+        counter.textContent = '1'
+
+        //add classes
+        box.classList.add('big-box');
+        left.classList.add('left');
+        imagery.classList.add('imagery');
+        name.classList.add('name');
+        right.classList.add('right');
+        description.classList.add('description');
+        rightBelow.classList.add('right-below');
+        quantity.classList.add('quantity');
+        counter.classList.add('counter')
+
+        //append elements to elements
+        left.appendChild(imagery);
+        left.appendChild(name)
+        rightBelow.appendChild(quantity);
+        rightBelow.appendChild(counter);
+        right.appendChild(description);
+        right.appendChild(rightBelow);
+        box.appendChild(left);
+        box.appendChild(right);
+        detailsList.appendChild(box);
+    }
+}
+
+
+
+addBtn.addEventListener('click', plusItemsToPage);
+addBtn.addEventListener('click', plusItemsToPageDetails);
 
 
 
