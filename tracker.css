@@ -26,6 +26,7 @@ body {
 }
 /* mobile syles */
 .header {
+    z-index: 1;
     font-family: 'PJS';
     background-image: linear-gradient(#e35384, #6a41ba);
     color: white;
@@ -109,7 +110,26 @@ body {
     justify-content: space-between;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center;   
+}
+.stock {
+    font-family: 'Franklin Gothic Medium';
+    display: none;
+}
+.out {
+    display: flex;
+    justify-content: center;
+}
+.fa-store-slash {
+    padding: 5px;
+    color: #120b9c;
+    visibility: hidden;
+}
+.slash-store:hover {
+    transition: 0.5s;
+}
+.gray-scale {
+    filter: grayscale(1);
 }
 .sample-one {
     background-image: url('images/beauty\ product.png');
@@ -149,14 +169,6 @@ body {
     color:#6a41ba;
 }
 
-.fa-store-slash {
-    padding: 5px;
-    color: #120b9c;
-    visibility: hidden;
-}
-.slash-store:hover {
-    transition: 0.5s;
-}
 .fa-store-slash:hover {
     background-color: #efe9eb;
 }

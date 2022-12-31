@@ -1,9 +1,14 @@
 const tabs = document.querySelector('#tabs-parent');
 const sections = document.querySelectorAll('.section');
-const heads = document.querySelectorAll('.heads')
-const tabbed = document.querySelectorAll('.tab')
-const list = document.querySelector('#homePage')
-const detailsList = document.querySelector('#detailsPage')
+const heads = document.querySelectorAll('.heads');
+const tabbed = document.querySelectorAll('.tab');
+const list = document.querySelector('#homePage');
+const detailsList = document.querySelector('#detailsPage');
+const theItems = document.querySelectorAll('.items');
+const slashParent = document.querySelectorAll('.slash-parent');
+
+
+
 // this is to swicth tabs uopn clicking action for the section
 tabs.addEventListener('click', (e) => {
     if (e.target.tagName === 'LI') {
@@ -14,18 +19,18 @@ tabs.addEventListener('click', (e) => {
             }else {
                 section.classList.remove('active')
             }
-        })
+        });
     } else if(e.target.tagName === 'I') {
         const targetSection = document.querySelector(e.target.dataset.target);
         sections.forEach((section) => {
             if (section === targetSection) {
                 section.classList.add('active');
             }else {
-                section.classList.remove('active')
+                section.classList.remove('active');
             }
-        })
+        });
     }
-}) 
+}); 
 
 
 // this is also to switch tabs upon clicking action for the heads
@@ -34,11 +39,11 @@ tabs.addEventListener ('click', (e) => {
         const targetHead = document.querySelector(e.target.dataset.head);
         heads.forEach((head) => {
             if (head === targetHead) {
-                head.classList.add('active')
+                head.classList.add('active');
             } else {
-                head.classList.remove('active')
+                head.classList.remove('active');
             }
-        })
+        });
     }else if (e.target.tagName === 'I') {
         const targetHead = document.querySelector(e.target.dataset.head);
         heads.forEach((head) => {
@@ -47,9 +52,23 @@ tabs.addEventListener ('click', (e) => {
             } else {
                 head.classList.remove('active')
             }
-        })
+        });
     }
 
+});
+
+//this is to make you see general info on products no mater what product you click
+list.addEventListener('click', (e) => {
+    if(e.target.className === 'fa-solid fa-circle-info') {
+        const targetSection = document.querySelector(e.target.dataset.target);
+        sections.forEach((section) => {
+            if (section === targetSection) {
+                section.classList.add('active');
+            }else {
+                section.classList.remove('active');
+            }
+        });
+    }
 })
 
 //this is to make the tab bottom border be visible on click
@@ -70,12 +89,12 @@ preview.addEventListener('change', function() {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
         uploaded_image = reader.result;
-        displayImage.style.backgroundImage = `url(${uploaded_image})`
+        displayImage.style.backgroundImage = `url(${uploaded_image})`;
     });
     reader.readAsDataURL(this.files[0]);
 });
 
-displayImage.style.backgroundImage = `url(${uploaded_image})`
+displayImage.style.backgroundImage = `url(${uploaded_image})`;
 
 //this is to specify what excatly gets added to the dom
 const amountConditions = () => {
@@ -83,10 +102,8 @@ const amountConditions = () => {
     const descriptionValue = document.querySelector('#productDescription').value.trim();
     
 }
-
 // this is to add product image, product name to the home page
 const addBtn = document.querySelector('#addBtn');
-
 
 const plusItemsToPage = (e) => {
     e.preventDefault();
@@ -103,6 +120,7 @@ const plusItemsToPage = (e) => {
         const items = document.createElement('div');
         const upper = document.createElement('div');
         const slashItem = document.createElement('i');
+        const stockOut = document.createElement('h2');
         const itemsMenu = document.createElement('div');
         const itemsName = document.createElement('h3');
         const info = document.createElement('i');
@@ -110,10 +128,12 @@ const plusItemsToPage = (e) => {
 
         //add text contents
         itemsName.textContent = nameValue.toLowerCase();
+        stockOut.textContent = 'Out of Stock'
 
         // create classes
         items.classList.add('items');
         slashItem.classList.add('fa-solid', 'fa-store-slash');
+        stockOut.classList.add('stock');
         itemsMenu.classList.add('items-menu');
         itemsName.classList.add('items-name');
         upper.classList.add('slash-parent');
@@ -126,10 +146,23 @@ const plusItemsToPage = (e) => {
         itemsMenu.appendChild(info);
         itemsMenu.appendChild(cancel);
         items.appendChild(upper);
+        items.appendChild(stockOut);
         items.appendChild(itemsMenu);
         list.appendChild(items);
-
-        items.style.backgroundImage =  `url(${uploaded_image})`
+        // theItems.forEach((item) => {
+        //     console.log(item.firstElementChild.nextElementSibling.firstElementChild.textContent)
+        // })
+        // list.appendChild(items);
+       
+        items.style.backgroundImage =  `url(${uploaded_image})`;
+        upper.addEventListener('mouseover', () => {
+            upper.firstElementChild.style.visibility = 'visible';
+        });
+        upper.addEventListener('mouseout', () => {
+            upper.firstElementChild.style.visibility = 'hidden';
+        });
+    
+        
     }
 }
 const plusItemsToPageDetails = () => {
@@ -156,8 +189,8 @@ const plusItemsToPageDetails = () => {
         //add text contents
         name.textContent = nameValue.toLowerCase();
         description.textContent = descriptionValue.toLowerCase();
-        quantity.textContent = 'quantity'
-        counter.textContent = '1'
+        quantity.textContent = 'quantity';
+        counter.textContent = '1';
 
         //add classes
         box.classList.add('big-box');
@@ -168,11 +201,11 @@ const plusItemsToPageDetails = () => {
         description.classList.add('description');
         rightBelow.classList.add('right-below');
         quantity.classList.add('quantity');
-        counter.classList.add('counter')
+        counter.classList.add('counter');
 
         //append elements to elements
         left.appendChild(imagery);
-        left.appendChild(name)
+        left.appendChild(name);
         rightBelow.appendChild(quantity);
         rightBelow.appendChild(counter);
         right.appendChild(description);
@@ -182,8 +215,6 @@ const plusItemsToPageDetails = () => {
         detailsList.appendChild(box);
     }
 }
-
-
 
 addBtn.addEventListener('click', plusItemsToPage);
 addBtn.addEventListener('click', plusItemsToPageDetails);
