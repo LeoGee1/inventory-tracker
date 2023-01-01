@@ -109,7 +109,7 @@
 
           <div class="description-parent">
             <label for="productDescription" class="label-description">product description</label>
-            <textarea id="productDescription" class="product-description" placeholder="write a detailed description"></textarea>
+            <textarea id="productDescription" class="product-description" placeholder="write a detailed description" maxlength="160"></textarea>
           </div>
 
           <div class="product-parent">
@@ -123,14 +123,23 @@
 
       <!-- file details section -->
       <section class="details-page section" id ="detailsPage">
-        <div class="big-box" id="bigBox">
+        <div class="big-box">
           <div class="left">
             <div class="imagery"></div>
             <h3 class="name">sample product</h3>
           </div>
 
           <div class="right">
-            <h3 class="description">This is a very high quality lotion that is mainly focused on softening and brightening the human skin, making sure there is no alteration in natural composure</h3>
+            <div class="right-above">
+              <i class="fa-regular fa-square-check"></i>
+              <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-minus fas"></i>
+              <i class="fa-solid fa-plus fap"></i>
+            </div>
+
+            <h3 class="description">This is a very high quality lotion that is mainly focused on softening and brightening the human skin, making sure there is no alteration in natural composure
+            </h3>
+
             <div class="right-below">
               <div class="quantity">Quantity</div>
               <div class="counter">1</div>

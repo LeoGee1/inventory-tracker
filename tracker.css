@@ -296,7 +296,7 @@ input[type='file'] {
 .big-box {
     margin: 10px auto;
     padding: 5px;
-    height: 200px;
+    /* height: 200px; */
     border: 3px solid #fefefe;
     border-radius: 5px;
     display: flex;
@@ -319,7 +319,7 @@ input[type='file'] {
     background-position: center;
     background-color: #efe9eb;
     width: 90%;
-    height: 90%;
+    height: 200px;
 }
 .name {
     font-size: 15px;
@@ -330,6 +330,57 @@ input[type='file'] {
     width: 55%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+}
+.right-above {
+    display: flex;
+    justify-content: end;
+}
+.fa-square-check {
+    display: none;
+    padding: 5px;
+    font-size: 20px;
+    margin-right: 15px;
+    color: #706a6ae7;
+}
+.fa-ellipsis {
+    margin-right: 20px;
+    padding: 5px;
+    cursor: pointer;
+}
+.fa-ellipsis:hover {
+    background-color: #fefefe79;
+}
+.fa-ellipsis:active {
+    background-color: #3a030379;
+}
+.fas, .fap {
+    font-size: 14px;
+    padding: 6px;
+    color: grey;
+    background-color: #fefefe79;
+    cursor: pointer;   
+}
+.fap:active {
+    background-color: #6a41ba;
+}
+.fas:active {
+    background-color: #1b024d;
+}
+.fas {
+    border-radius: 5px 0px 0px 5px;
+
+}
+.fap {
+    padding-right: 8px;
+    border-radius: 0px 5px 5px 0px;
+
+}
+.description {
+    font-size: 13px;
+    margin: 5px;
+    color: #120b9c;
+    height: 60%;
 }
 .right-below {
     font-family: 'PJS';
@@ -337,16 +388,22 @@ input[type='file'] {
     justify-content: space-evenly;
     background-color: #fefefe79;
     padding: 2px 3px;
-    margin: 20px 15px 5px 15px;
     font-weight: bolder;
 }
-.description {
-    font-size: 13px;
-    height: 70%;
-    margin: 10px;
-    color: #120b9c;
-}
 
+.false-input {
+    background-color: inherit;
+    font-family: 'PFD';
+    font-weight: bold;
+    resize: none;
+    width: 90%;
+    height: 60%;
+    color: #120b9c;
+    border: none;
+}
+.false-input:focus {
+    outline: none;
+}
 
 .headerThirdChild {
     display: flex;

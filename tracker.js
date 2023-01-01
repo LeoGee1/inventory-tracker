@@ -139,6 +139,7 @@ const plusItemsToPage = (e) => {
         upper.classList.add('slash-parent');
         info.classList.add('fa-solid', 'fa-circle-info');
         cancel.classList.add('fa-solid', 'fa-xmark');
+        info.setAttribute('data-target','.details-page')
 
         //append elements to elements
         upper.appendChild(slashItem);
@@ -171,7 +172,7 @@ const plusItemsToPageDetails = () => {
     if (nameValue.length === 0 || nameValue.length > 15) {
         return;
     } else if (descriptionValue.length === 0 || descriptionValue.length > 200) {
-        return
+        return;
     }else if (displayImage.style.backgroundImage !== ''
     ) {
         // create elements
@@ -181,6 +182,11 @@ const plusItemsToPageDetails = () => {
         const imagery = document.createElement('div');
         const name = document.createElement('h3');
         const right = document.createElement('div');
+        const check = document.createElement('i');
+        const ellipsis = document.createElement('i');
+        const minus = document.createElement('i');
+        const plus = document.createElement('i');
+        const rightAbove = document.createElement('div');
         const description =  document.createElement('h3');
         const rightBelow =  document.createElement('div');
         const quantity = document.createElement('div');
@@ -189,7 +195,7 @@ const plusItemsToPageDetails = () => {
         //add text contents
         name.textContent = nameValue.toLowerCase();
         description.textContent = descriptionValue.toLowerCase();
-        quantity.textContent = 'quantity';
+        quantity.textContent = 'Quantity';
         counter.textContent = '1';
 
         //add classes
@@ -200,19 +206,31 @@ const plusItemsToPageDetails = () => {
         right.classList.add('right');
         description.classList.add('description');
         rightBelow.classList.add('right-below');
+        rightAbove.classList.add('right-above')
+        check.classList.add('fa-regular', 'fa-square-check');
+        ellipsis.classList.add('fa-solid', 'fa-ellipsis');
+        minus.classList.add('fa-solid', 'fa-minus', 'fas');
+        plus.classList.add('fa-solid', 'fa-plus', 'fap');
         quantity.classList.add('quantity');
         counter.classList.add('counter');
 
         //append elements to elements
         left.appendChild(imagery);
         left.appendChild(name);
+        rightAbove.appendChild(check)
+        rightAbove.appendChild(ellipsis);
+        rightAbove.appendChild(minus);
+        rightAbove.appendChild(plus);
         rightBelow.appendChild(quantity);
         rightBelow.appendChild(counter);
+        right.appendChild(rightAbove);
         right.appendChild(description);
         right.appendChild(rightBelow);
         box.appendChild(left);
         box.appendChild(right);
         detailsList.appendChild(box);
+
+        imagery.style.backgroundImage =  `url(${uploaded_image})`
     }
 }
 
