@@ -45,7 +45,6 @@ detailsList.addEventListener('click', (e) => {
 
 //this is to edit our description details and turn it into and input box 
 if(e.target.className === 'fa-solid fa-ellipsis') {
-    console.log('new year')
     let details = e.target.parentElement.nextElementSibling;
     let content = e.target.parentElement.nextElementSibling.textContent;        
     let newDetails = document.createElement('TEXTAREA');
@@ -59,7 +58,6 @@ if(e.target.className === 'fa-solid fa-ellipsis') {
  }
  // to update edits...
  if(e.target.className === 'fa-regular fa-square-check') {
-
     let newDetails = e.target.parentElement.nextElementSibling;
     let content = e.target.parentElement.nextElementSibling.value;
     let details = document.createElement('h3');

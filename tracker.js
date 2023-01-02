@@ -143,12 +143,8 @@ const plusItemsToPage = (e) => {
 
         //append elements to elements
         upper.appendChild(slashItem);
-        itemsMenu.appendChild(itemsName);
-        itemsMenu.appendChild(info);
-        itemsMenu.appendChild(cancel);
-        items.appendChild(upper);
-        items.appendChild(stockOut);
-        items.appendChild(itemsMenu);
+        itemsMenu.append(itemsName, info, cancel);
+        items.append(upper, stockOut, itemsMenu);
         list.appendChild(items);
         // theItems.forEach((item) => {
         //     console.log(item.firstElementChild.nextElementSibling.firstElementChild.textContent)
@@ -215,19 +211,11 @@ const plusItemsToPageDetails = () => {
         counter.classList.add('counter');
 
         //append elements to elements
-        left.appendChild(imagery);
-        left.appendChild(name);
-        rightAbove.appendChild(check)
-        rightAbove.appendChild(ellipsis);
-        rightAbove.appendChild(minus);
-        rightAbove.appendChild(plus);
-        rightBelow.appendChild(quantity);
-        rightBelow.appendChild(counter);
-        right.appendChild(rightAbove);
-        right.appendChild(description);
-        right.appendChild(rightBelow);
-        box.appendChild(left);
-        box.appendChild(right);
+        left.append(imagery, name);
+        rightAbove.append(check, ellipsis, minus, plus)
+        rightBelow.append(quantity, counter);
+        right.append(rightAbove, description, rightBelow);
+        box.append(left, right);
         detailsList.appendChild(box);
 
         imagery.style.backgroundImage =  `url(${uploaded_image})`
