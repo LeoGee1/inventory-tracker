@@ -31,7 +31,6 @@ body {
     background-image: linear-gradient(#e35384, #6a41ba);
     color: white;
     position: relative;
-    /* height: 163px; */
     position: sticky;
     top: 0;
 }
@@ -47,7 +46,7 @@ body {
 }
 
 .fa-user {
-   font-size: 15px;
+   font-size: 5px;
 }
 .headerFirstChild {
     display: flex;
@@ -115,6 +114,7 @@ body {
 .stock {
     font-family: 'Franklin Gothic Medium';
     display: none;
+    text-align: center;
 }
 .out {
     display: flex;
@@ -381,6 +381,8 @@ input[type='file'] {
     margin: 5px;
     color: #120b9c;
     height: 60%;
+    word-wrap: break-word;
+
 }
 .right-below {
     font-family: 'PJS';
@@ -435,5 +437,55 @@ input[type='file'] {
 }
 .heads.active {
     display: flex;
+}
+
+/* design for tablets */
+@media screen and (min-width: 768px){
+    .inventory {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    .fa-user {
+        font-size: 20px;
+     }
+     .tab {
+        padding: 10px 50px;
+        font-size: 18px;
+    
+    }
+    .file-addition-page {
+        gap: 35px;
+        width: 500px;
+    }
+
+    .name-parent, .description-parent,.product-parent {
+        font-size: 16px;
+        gap: 13px;
+        width: inherit;
+    }
+    .product-name {
+        height: 35px;
+        border-radius: 7px;
+        border: 3px solid transparent;
+        font-size: 18px;
+        color: #120b9c;
+    }
+    
+    .product-description {
+        height: 80px;
+        border-radius: 7px;
+        border: 3px solid transparent;
+        font-size: 18px;
+        font-weight: bold;
+        color: #120b9c;
+    }
+    .product-description::placeholder {
+        font-family: 'Sans-serif';
+        font-size: 18px;
+    }
+    .label-file {
+        padding: 80px 100px;
+        border: 2px dotted #350596;
+      }
 }
 

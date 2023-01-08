@@ -15,6 +15,7 @@ const toggle = () => {
 toggle();
 
 // this is to mark items out of stock
+
 list.addEventListener('click', (e) => {
     if(e.target.className === 'fa-solid fa-store-slash') {
        e.target.parentElement.parentElement.classList.toggle('gray-scale');
@@ -23,9 +24,30 @@ list.addEventListener('click', (e) => {
 //this is to remove elements from the dom
     if(e.target.className ==='fa-solid fa-xmark') {
         const item = e.target.parentElement.parentElement;
-        list.removeChild(item);
-    };
+        const bigbox = document.querySelectorAll('.big-box');
+        const theItems = document.querySelectorAll('.items');
 
+        // let name = item.lastElementChild.firstElementChild.textContent;
+        let id = item.id
+        list.removeChild(item);
+
+    
+        bigbox.forEach((box) => {
+            if(item.lastElementChild.textContent === box.firstElementChild.lastElementChild.textContent) {
+            detailsList.removeChild(box)
+            }
+        });
+
+        // if(item.lastElementChild.textContent === bigbox.firstElementChild.lastElementChild.textContent) {
+        //     detailsList.removeChild(bigbox)
+        // }
+
+        // let sample = JSON.parse(localStorage.getItem('sample'));
+
+        // localStorage.setItem('sample', JSON.stringify(sample));
+        
+    };
+    
 });
 
  //this is to increase the quantity
@@ -34,6 +56,13 @@ detailsList.addEventListener('click', (e) => {
         let add = e.target.parentElement.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;
         data++;
         add.innerText = data;
+
+        let  sample = (JSON.parse(localStorage.getItem('sample')));
+        let newItem = {
+            quantity: data
+        };
+        sample.push(newItem);
+        localStorage.setItem('sample', JSON.stringify(sample));
      };
 
 // this is to decrease quantity   
@@ -41,6 +70,13 @@ detailsList.addEventListener('click', (e) => {
         let reduce = e.target.parentElement.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling
         data--;
         reduce.innerText = data;
+
+        let sample = (JSON.parse(localStorage.getItem('sample')));
+        let newItem = {
+            quantity: data
+        };
+        sample.push(newItem);
+        localStorage.setItem('sample', JSON.stringify(sample));
      };
 
 //this is to edit our description details and turn it into and input box 
@@ -66,8 +102,15 @@ if(e.target.className === 'fa-solid fa-ellipsis') {
     newDetails.parentElement.replaceChild(details, newDetails);
     details.textContent = content;
     e.target.style.display = 'none'
- }
 
+    let sample = JSON.parse(localStorage.getItem('sample'));
+    let newItem = {
+        description: content
+    };
+    sample.push(newItem);
+    localStorage.setItem('sample', JSON.stringify(sample));
+
+    }
 });
 
 

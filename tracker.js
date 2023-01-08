@@ -4,9 +4,10 @@ const heads = document.querySelectorAll('.heads');
 const tabbed = document.querySelectorAll('.tab');
 const list = document.querySelector('#homePage');
 const detailsList = document.querySelector('#detailsPage');
-const theItems = document.querySelectorAll('.items');
+// const theItems = document.querySelectorAll('.items');
 const slashParent = document.querySelectorAll('.slash-parent');
-
+const firstName = document.querySelectorAll('.items-name')
+// let idCount = 0;
 
 
 // this is to swicth tabs uopn clicking action for the section
@@ -82,36 +83,268 @@ tabbed.forEach(tab => {
 // this is to display product preview image for upload
 const preview = document.querySelector('#file');
 const displayImage = document.querySelector('#labelFile');
-var uploaded_image = '';
+let uploaded_image = '';
 
 
 preview.addEventListener('change', function() {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => {
-        uploaded_image = reader.result;
-        displayImage.style.backgroundImage = `url(${uploaded_image})`;
-    });
-    reader.readAsDataURL(this.files[0]);
+   if(preview.files.length > 0) {
+        const fileSize = preview.files.item(0).size;
+        const fileKb =  Math.round(fileSize / 1024);
+        if(fileKb >= 500) {
+            alert('file too big, please select a file less than 500kb')
+        }else {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => {
+                uploaded_image = reader.result;
+                displayImage.style.backgroundImage = `url(${uploaded_image})`;
+                
+            });
+            reader.readAsDataURL(this.files[0]);
+        }
+   }
 });
 
 displayImage.style.backgroundImage = `url(${uploaded_image})`;
 
-//this is to specify what excatly gets added to the dom
-const amountConditions = () => {
-    const nameValue = document.querySelector('#productName').value.trim();
-    const descriptionValue = document.querySelector('#productDescription').value.trim();
+
+// let updateId = idCount ;
+
+
+let samplesData = [ 
+    {
+        id: '0',
+        name: 'Sample One',
+        desc: 'high qaulity you can get at all times',
+        quantity: 1,
+        image: 'images/beautyproduct.png',
+        class: 'sample-one'
+    },
+    {
+        id: '1',
+        name: 'Sample-pro-2',
+        desc: 'high qaulity you can get at all times',
+        quantity: 1,
+        image: 'images/colour.jpg',
+        class: 'sample-two'
+
+    },
+    {
+        id: '2',
+        name: 'Sample-pro-3',
+        desc: 'high qaulity you can get at all times',
+        quantity: 1,
+        image: 'images/air.jpg',
+        class: 'sample-three'
+
+    },
+    {
+        id: '3',
+        name: 'Sample-pro-4',
+        desc: 'high qaulity you can get at all times',
+        quantity: 1,
+        image: 'images/apple.jpg',
+        class: 'sample-four'
+
+    }
+]
+
+
+//this is to display our sample produts using only js
+const samplesDisplay = () => {
+    return (list.innerHTML =  samplesData.map((sample) => {
+
+        let { id, name, image} = sample
+        return  `
+        <div class="items" style = "background-image : url(${image})">
+         <div class="slash-parent"><i class="fa-solid fa-store-slash"></i>
+         </div>
+         <h2 class="stock">Out of Stock</h2>
+         <div class="items-menu">
+          <h3 class="items-name">${name}</h3>
+          <i class="fa-solid fa-circle-info" data-target=".details-page"></i>
+          <i class="fa-solid fa-xmark"></i>
+         </div>
+      </div>
+        `
+    }).join(''));
+
     
-}
+    // const item = document.querySelector('.sample-one');
+    // //one
+    // const itemOne = document.createElement('div');
+    // const upperOne = document.createElement('div');
+    // const slashItemOne = document.createElement('i');
+    // const stockOutOne = document.createElement('h2');
+    // const itemMenuOne = document.createElement('div');
+    // const itemNameOne = document.createElement('h3');
+    // const infoOne = document.createElement('i');
+    // const cancelOne = document.createElement('i');
+
+    // //two
+    // const itemTwo = document.createElement('div');
+    // const upperTwo = document.createElement('div');
+    // const slashItemTwo = document.createElement('i');
+    // const stockOutTwo = document.createElement('h2');
+    // const itemMenuTwo = document.createElement('div');
+    // const itemNameTwo = document.createElement('h3');
+    // const infoTwo = document.createElement('i');
+    // const cancelTwo = document.createElement('i')
+
+    // const itemThree = document.createElement('div');
+    // const upperThree = document.createElement('div');
+    // const slashItemThree = document.createElement('i');
+    // const stockOutThree = document.createElement('h2');
+    // const itemMenuThree = document.createElement('div');
+    // const itemNameThree = document.createElement('h3');
+    // const infoThree = document.createElement('i');
+    // const cancelThree = document.createElement('i')
+
+    // //four
+    // const itemFour = document.createElement('div');
+    // const upperFour = document.createElement('div');
+    // const slashItemFour = document.createElement('i');
+    // const stockOutFour = document.createElement('h2');
+    // const itemMenuFour = document.createElement('div');
+    // const itemNameFour = document.createElement('h3');
+    // const infoFour = document.createElement('i');
+    // const cancelFour = document.createElement('i')
+
+
+    // //add text contents
+    // //one
+    // let nameValue = 'Sample One'
+    // itemNameOne.textContent = nameValue
+    // stockOutOne.textContent = 'Out of Stock';
+
+    // //two
+    // let nameValueTwo = 'Sample Pro-2';
+    // itemNameTwo.textContent = nameValueTwo;
+    // stockOutTwo.textContent = 'Out of Stock';
+
+    // //three
+    // let nameValueThree = 'Sample-Pro-3'
+    // itemNameThree.textContent = nameValueThree
+    // stockOutThree.textContent = 'Out of Stock';
+
+    // //four
+    // let nameValueFour = 'Sample-Pro-4'
+    // itemNameFour.textContent = nameValueFour;
+    // stockOutFour.textContent = 'Out of Stock';
+
+    // // create classes
+    // // one
+    // slashItemOne.classList.add('fa-solid', 'fa-store-slash');
+    // stockOutOne.classList.add('stock');
+    // itemMenuOne.classList.add('items-menu');
+    // itemNameOne.classList.add('items-name');
+    // upperOne.classList.add('slash-parent');
+    // infoOne.classList.add('fa-solid', 'fa-circle-info');
+    // cancelOne.classList.add('fa-solid', 'fa-xmark');
+    // infoOne.setAttribute('data-target','.details-page')
+    // itemOne.classList.add('items', 'sample-one');
+    // itemOne.setAttribute('id', id);
+    // itemOne.setAttribute('style', 'background-image: url(images/beauty\ product.png)');
+
+
+
+    // //two
+    // slashItemTwo.classList.add('fa-solid', 'fa-store-slash');
+    // stockOutTwo.classList.add('stock');
+    // itemMenuTwo.classList.add('items-menu');
+    // itemNameTwo.classList.add('items-name');
+    // upperTwo.classList.add('slash-parent');
+    // infoTwo.classList.add('fa-solid', 'fa-circle-info');
+    // cancelTwo.classList.add('fa-solid', 'fa-xmark');
+    // infoTwo.setAttribute('data-target','.details-page')
+    // itemTwo.classList.add('items', 'sample-two');
+    // itemTwo.setAttribute('id', id + 1);
+    // itemTwo.setAttribute('style', 'background-image: url(images/colour.jpg)');
+
+    // //three
+    // slashItemThree.classList.add('fa-solid', 'fa-store-slash');
+    // stockOutThree.classList.add('stock');
+    // itemMenuThree.classList.add('items-menu');
+    // itemNameThree.classList.add('items-name');
+    // upperThree.classList.add('slash-parent');
+    // infoThree.classList.add('fa-solid', 'fa-circle-info');
+    // cancelThree.classList.add('fa-solid', 'fa-xmark');
+    // infoThree.setAttribute('data-target','.details-page')
+    // itemThree.classList.add('items', 'sample-three');
+    // itemThree.setAttribute('id', id + 2);
+    // itemThree.setAttribute('style', 'background-image: url(images/air.jpg)');
+
+    
+    // //four
+    // slashItemFour.classList.add('fa-solid', 'fa-store-slash');
+    // stockOutFour.classList.add('stock');
+    // itemMenuFour.classList.add('items-menu');
+    // itemNameFour.classList.add('items-name');
+    // upperFour.classList.add('slash-parent');
+    // infoFour.classList.add('fa-solid', 'fa-circle-info');
+    // cancelFour.classList.add('fa-solid', 'fa-xmark');
+    // infoFour.setAttribute('data-target','.details-page')
+    // itemFour.classList.add('items', 'sample-four');
+    // itemFour.setAttribute('id', id + 3);
+    // itemFour.setAttribute('style', 'background-image: url(images/apple.jpg)');
+
+    
+
+    // // append each to each
+    // //one
+    // upperOne.appendChild(slashItemOne);
+    // itemMenuOne.append(itemNameOne, infoOne, cancelOne);
+    // itemOne.append(upperOne, stockOutOne, itemMenuOne);
+
+    // //two
+    // upperTwo.appendChild(slashItemTwo);
+    // itemMenuTwo.append(itemNameTwo, infoTwo, cancelTwo);
+    // itemTwo.append(upperTwo, stockOutTwo, itemMenuTwo);
+    // list.append(itemTwo);
+
+    // //three
+    // upperThree.appendChild(slashItemThree);
+    // itemMenuThree.append(itemNameThree, infoThree, cancelThree);
+    // itemThree.append(upperThree, stockOutThree, itemMenuThree);
+
+
+    // //four
+    // upperFour.appendChild(slashItemFour);
+    // itemMenuFour.append(itemNameFour, infoFour, cancelFour);
+    // itemFour.append(upperFour, stockOutFour, itemMenuFour);
+
+    // list.append(itemOne, itemTwo, itemThree, itemFour);
+
+    // const items = document.querySelectorAll('.items');
+    // items.forEach(item => {
+    //     item.addEventListener('mouseover', () => {
+    //         item.firstElementChild.firstElementChild.style.visibility = 'visible';
+    //     });
+    //     item.addEventListener('mouseout', () => {
+    //         item.firstElementChild.firstElementChild.style.visibility = 'hidden';
+    //     });
+
+    // });
+
+};
+
+samplesDisplay();
+
 // this is to add product image, product name to the home page
 const addBtn = document.querySelector('#addBtn');
+let idPlus = 3
+
 
 const plusItemsToPage = (e) => {
     e.preventDefault();
 
     const nameValue = document.querySelector('#productName').value.trim();
     const descriptionValue = document.querySelector('#productDescription').value.trim();
+
+    idPlus++;
+    let updateId = idPlus;
     if (nameValue.length === 0 || nameValue.length > 15) {
         return;
+        
     } else if (descriptionValue.length === 0 || descriptionValue.length > 200) {
         return
     }else if (displayImage.style.backgroundImage !== ''
@@ -128,7 +361,7 @@ const plusItemsToPage = (e) => {
 
         //add text contents
         itemsName.textContent = nameValue.toLowerCase();
-        stockOut.textContent = 'Out of Stock'
+        stockOut.textContent = 'Out of Stock';
 
         // create classes
         items.classList.add('items');
@@ -139,13 +372,16 @@ const plusItemsToPage = (e) => {
         upper.classList.add('slash-parent');
         info.classList.add('fa-solid', 'fa-circle-info');
         cancel.classList.add('fa-solid', 'fa-xmark');
-        info.setAttribute('data-target','.details-page')
+        info.setAttribute('data-target','.details-page');
 
+    
+        items.setAttribute('id', updateId)
         //append elements to elements
         upper.appendChild(slashItem);
         itemsMenu.append(itemsName, info, cancel);
         items.append(upper, stockOut, itemsMenu);
         list.appendChild(items);
+
         // theItems.forEach((item) => {
         //     console.log(item.firstElementChild.nextElementSibling.firstElementChild.textContent)
         // })
@@ -158,10 +394,25 @@ const plusItemsToPage = (e) => {
         upper.addEventListener('mouseout', () => {
             upper.firstElementChild.style.visibility = 'hidden';
         });
-    
+
+        let sample = JSON.parse(localStorage.getItem('sample'));
         
+        let newItems = {
+            id: updateId,
+            name: nameValue,
+            description: descriptionValue,
+            imageUrl: `url(${uploaded_image})`
+        }
+
+        sample.push(newItems);
+        
+        localStorage.setItem('sample', JSON.stringify(sample));
+
     }
 }
+
+
+
 const plusItemsToPageDetails = () => {
     const nameValue = document.querySelector('#productName').value.trim();
     const descriptionValue = document.querySelector('#productDescription').value.trim();
@@ -218,7 +469,12 @@ const plusItemsToPageDetails = () => {
         box.append(left, right);
         detailsList.appendChild(box);
 
-        imagery.style.backgroundImage =  `url(${uploaded_image})`
+        imagery.style.backgroundImage =  `url(${uploaded_image})`;
+        let sample = JSON.parse(localStorage.getItem('sample'));
+
+
+        localStorage.setItem('sample', JSON.stringify(sample));
+
     }
 }
 
