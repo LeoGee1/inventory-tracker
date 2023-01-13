@@ -46,7 +46,7 @@ body {
 }
 
 .fa-user {
-   font-size: 5px;
+   font-size: 15px;
 }
 .headerFirstChild {
     display: flex;
@@ -237,7 +237,7 @@ body {
     resize: none;
 }
 .product-description::placeholder {
-    font-family: 'Sans-serif';
+    font-family: 'PFD-italy';
 }
 input[type='file'] {
     color: rgba(0, 0, 0, 0)
@@ -296,13 +296,13 @@ input[type='file'] {
 .big-box {
     margin: 10px auto;
     padding: 5px;
-    /* height: 200px; */
     border: 3px solid #fefefe;
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
     width: 90%;
     font-family: 'PFD';
+    max-width: px;
 }
 .left {
     width: 45%;
@@ -313,7 +313,8 @@ input[type='file'] {
 }
 
 .imagery {
-    background-image: url('images/beauty\ product.png');
+    /* background-image: url('images/beauty\ product.png'); */
+    display: flex;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -457,6 +458,9 @@ input[type='file'] {
         gap: 35px;
         width: 500px;
     }
+      .headerInput {
+        flex-basis: 700px;
+    }
 
     .name-parent, .description-parent,.product-parent {
         font-size: 16px;
@@ -480,12 +484,125 @@ input[type='file'] {
         color: #120b9c;
     }
     .product-description::placeholder {
-        font-family: 'Sans-serif';
-        font-size: 18px;
+        font-family: 'PFD-italy';
     }
     .label-file {
         padding: 80px 100px;
         border: 2px dotted #350596;
-      }
+    }
+      .big-box {
+        margin: 20px auto;
+        padding: 10px;
+        max-width: 780px;
+    }
+    .name {
+        font-size: 15px;
+        margin: 5px;
+        color: #120b9c;
+    }
+    .left {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .imagery {
+        display: flex;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #efe9eb;
+        width: 90%;
+        height: 200px;
+    }
+    .name {
+        font-size: 20px;
+        margin: 8px;
+    }
+    .right {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .fa-square-check {
+        font-size: 25px;
+        margin-right: 20px;
+    }
+    .fa-square-check:hover {
+        color: #350596;
+    }
+    .fa-ellipsis {
+        font-size: 20px;
+    }
+   
+    .fas, .fap {
+        font-size: 18px;
+        padding: 8px;
+    }
+ 
+    .description {
+        font-size: 17px;    
+    }
+    .right-below {
+        font-size: 18px;
+        padding: 4px 3px;
+        font-weight: bolder;
+    }
+    
+    .false-input {
+        font-size: 17px;
+        border: none;
+    }
 }
+/* laptop designs */
+@media screen and (min-width: 900px) {
+    .headerFirstChild {
+        padding: 10px;
+        margin: 15px auto;
+        border-radius: 2px;
+        max-width: 900px;
+    }
+    
+    .headerInput {
+        padding: 8px;
+        font-size: large;
 
+    }
+    .headerInput::placeholder {
+        font-size: large;
+    }
+    .fa-magnifying-glass {
+        padding: 8px;
+    }
+    .inventory {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    
+    .fa-user {
+       font-size: 25px;
+    }
+    .headerSecondChild {
+        padding: 10px;
+        margin: 15px auto;
+        border-radius: 2px;
+        max-width: 900px;
+    }
+    .headerThirdChild {
+        padding: 10px;
+        margin: 15px auto;
+        border-radius: 2px;
+        max-width: 900px;
+    }
+    .home-page {
+        margin: 0 auto;
+        width: 1000px;
+        padding: 30px 5px;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}

@@ -4,10 +4,6 @@ const heads = document.querySelectorAll('.heads');
 const tabbed = document.querySelectorAll('.tab');
 const list = document.querySelector('#homePage');
 const detailsList = document.querySelector('#detailsPage');
-// const theItems = document.querySelectorAll('.items');
-const slashParent = document.querySelectorAll('.slash-parent');
-const firstName = document.querySelectorAll('.items-name')
-// let idCount = 0;
 
 
 // this is to swicth tabs uopn clicking action for the section
@@ -18,7 +14,7 @@ tabs.addEventListener('click', (e) => {
             if (section === targetSection) {
                 section.classList.add('active');
             }else {
-                section.classList.remove('active')
+                section.classList.remove('active');
             }
         });
     } else if(e.target.tagName === 'I') {
@@ -28,9 +24,9 @@ tabs.addEventListener('click', (e) => {
                 section.classList.add('active');
             }else {
                 section.classList.remove('active');
-            }
+            };
         });
-    }
+    };
 }); 
 
 
@@ -43,18 +39,19 @@ tabs.addEventListener ('click', (e) => {
                 head.classList.add('active');
             } else {
                 head.classList.remove('active');
-            }
+            };
         });
     }else if (e.target.tagName === 'I') {
         const targetHead = document.querySelector(e.target.dataset.head);
         heads.forEach((head) => {
             if (head === targetHead) {
                 head.classList.add('active')
-            } else {
-                head.classList.remove('active')
             }
+            else {
+                head.classList.remove('active')
+            };
         });
-    }
+    };
 
 });
 
@@ -65,11 +62,12 @@ list.addEventListener('click', (e) => {
         sections.forEach((section) => {
             if (section === targetSection) {
                 section.classList.add('active');
-            }else {
-                section.classList.remove('active');
             }
+            else {
+                section.classList.remove('active');
+            };
         });
-    }
+    };
 })
 
 //this is to make the tab bottom border be visible on click
@@ -100,62 +98,87 @@ preview.addEventListener('change', function() {
                 
             });
             reader.readAsDataURL(this.files[0]);
-        }
-   }
+        };
+   };
 });
 
-displayImage.style.backgroundImage = `url(${uploaded_image})`;
 
+let basket = [
+    {
+        id: 'zero',
+        name: 'Sample One',
+        desc: 'This is a very high quality lotion that is mainly focused on softening and brightening the human skin, making sure there is no alteration in natural composure',
+        image: 'images/beautyproduct.png',
+        item: 0,
+    },
+    {
+        id: 'one',
+        name: 'Sample-pro-2',
+        desc: 'high qaulity you can trust at all times',
+        image: 'images/colour.jpg',
+        item: 0,
+    },
+    {
+        id: 'two',
+        name: 'Sample-pro-3',
+        desc: 'high qaulity you can use at all times',
+        image: 'images/air.jpg',
+        item: 0,
+    },
+    {
+        id: 'three',
+        name: 'Sample-pro-4',
+        desc: 'high qaulity you can call on at all times',
+        image: 'images/apple.jpg',
+        item: 0,
+    }
+];
 
-// let updateId = idCount ;
+basket = JSON.parse(localStorage.getItem('data')) || basket;
 
 
 let samplesData = [ 
     {
-        id: '0',
+        id: 'sample-zero',
         name: 'Sample One',
-        desc: 'high qaulity you can get at all times',
-        quantity: 1,
+        desc: 'This is a very high quality lotion that is mainly focused on softening and brightening the human skin, making sure there is no alteration in natural composure',
         image: 'images/beautyproduct.png',
-        class: 'sample-one'
     },
     {
-        id: '1',
+        id: 'sample-one',
         name: 'Sample-pro-2',
-        desc: 'high qaulity you can get at all times',
-        quantity: 1,
+        desc: 'high qaulity you can trust at all times',
         image: 'images/colour.jpg',
-        class: 'sample-two'
-
     },
     {
-        id: '2',
+        id: 'sample-two',
         name: 'Sample-pro-3',
-        desc: 'high qaulity you can get at all times',
-        quantity: 1,
+        desc: 'high qaulity you can use at all times',
         image: 'images/air.jpg',
-        class: 'sample-three'
-
     },
     {
-        id: '3',
+        id: 'sample-three',
         name: 'Sample-pro-4',
-        desc: 'high qaulity you can get at all times',
-        quantity: 1,
+        desc: 'high qaulity you can call on at all times',
         image: 'images/apple.jpg',
-        class: 'sample-four'
-
     }
-]
+];
+
+samplesData = JSON.parse(localStorage.getItem('samples')) || samplesData;
+
+localStorage.setItem('data', JSON.stringify(basket));
+localStorage.setItem('samples', JSON.stringify(samplesData));
 
 
 //this is to display our sample produts using only js
 const samplesDisplay = () => {
+
     return (list.innerHTML =  samplesData.map((sample) => {
 
-        let { id, name, image} = sample
+        let { id, name, image } = sample;        
         return  `
-        <div class="items" style = "background-image : url(${image})">
+
+        <div id = ${id} class="items" style = "background-image : url(${image})">
          <div class="slash-parent"><i class="fa-solid fa-store-slash"></i>
          </div>
          <h2 class="stock">Out of Stock</h2>
@@ -167,226 +190,106 @@ const samplesDisplay = () => {
       </div>
         `
     }).join(''));
-
-    
-    // const item = document.querySelector('.sample-one');
-    // //one
-    // const itemOne = document.createElement('div');
-    // const upperOne = document.createElement('div');
-    // const slashItemOne = document.createElement('i');
-    // const stockOutOne = document.createElement('h2');
-    // const itemMenuOne = document.createElement('div');
-    // const itemNameOne = document.createElement('h3');
-    // const infoOne = document.createElement('i');
-    // const cancelOne = document.createElement('i');
-
-    // //two
-    // const itemTwo = document.createElement('div');
-    // const upperTwo = document.createElement('div');
-    // const slashItemTwo = document.createElement('i');
-    // const stockOutTwo = document.createElement('h2');
-    // const itemMenuTwo = document.createElement('div');
-    // const itemNameTwo = document.createElement('h3');
-    // const infoTwo = document.createElement('i');
-    // const cancelTwo = document.createElement('i')
-
-    // const itemThree = document.createElement('div');
-    // const upperThree = document.createElement('div');
-    // const slashItemThree = document.createElement('i');
-    // const stockOutThree = document.createElement('h2');
-    // const itemMenuThree = document.createElement('div');
-    // const itemNameThree = document.createElement('h3');
-    // const infoThree = document.createElement('i');
-    // const cancelThree = document.createElement('i')
-
-    // //four
-    // const itemFour = document.createElement('div');
-    // const upperFour = document.createElement('div');
-    // const slashItemFour = document.createElement('i');
-    // const stockOutFour = document.createElement('h2');
-    // const itemMenuFour = document.createElement('div');
-    // const itemNameFour = document.createElement('h3');
-    // const infoFour = document.createElement('i');
-    // const cancelFour = document.createElement('i')
-
-
-    // //add text contents
-    // //one
-    // let nameValue = 'Sample One'
-    // itemNameOne.textContent = nameValue
-    // stockOutOne.textContent = 'Out of Stock';
-
-    // //two
-    // let nameValueTwo = 'Sample Pro-2';
-    // itemNameTwo.textContent = nameValueTwo;
-    // stockOutTwo.textContent = 'Out of Stock';
-
-    // //three
-    // let nameValueThree = 'Sample-Pro-3'
-    // itemNameThree.textContent = nameValueThree
-    // stockOutThree.textContent = 'Out of Stock';
-
-    // //four
-    // let nameValueFour = 'Sample-Pro-4'
-    // itemNameFour.textContent = nameValueFour;
-    // stockOutFour.textContent = 'Out of Stock';
-
-    // // create classes
-    // // one
-    // slashItemOne.classList.add('fa-solid', 'fa-store-slash');
-    // stockOutOne.classList.add('stock');
-    // itemMenuOne.classList.add('items-menu');
-    // itemNameOne.classList.add('items-name');
-    // upperOne.classList.add('slash-parent');
-    // infoOne.classList.add('fa-solid', 'fa-circle-info');
-    // cancelOne.classList.add('fa-solid', 'fa-xmark');
-    // infoOne.setAttribute('data-target','.details-page')
-    // itemOne.classList.add('items', 'sample-one');
-    // itemOne.setAttribute('id', id);
-    // itemOne.setAttribute('style', 'background-image: url(images/beauty\ product.png)');
-
-
-
-    // //two
-    // slashItemTwo.classList.add('fa-solid', 'fa-store-slash');
-    // stockOutTwo.classList.add('stock');
-    // itemMenuTwo.classList.add('items-menu');
-    // itemNameTwo.classList.add('items-name');
-    // upperTwo.classList.add('slash-parent');
-    // infoTwo.classList.add('fa-solid', 'fa-circle-info');
-    // cancelTwo.classList.add('fa-solid', 'fa-xmark');
-    // infoTwo.setAttribute('data-target','.details-page')
-    // itemTwo.classList.add('items', 'sample-two');
-    // itemTwo.setAttribute('id', id + 1);
-    // itemTwo.setAttribute('style', 'background-image: url(images/colour.jpg)');
-
-    // //three
-    // slashItemThree.classList.add('fa-solid', 'fa-store-slash');
-    // stockOutThree.classList.add('stock');
-    // itemMenuThree.classList.add('items-menu');
-    // itemNameThree.classList.add('items-name');
-    // upperThree.classList.add('slash-parent');
-    // infoThree.classList.add('fa-solid', 'fa-circle-info');
-    // cancelThree.classList.add('fa-solid', 'fa-xmark');
-    // infoThree.setAttribute('data-target','.details-page')
-    // itemThree.classList.add('items', 'sample-three');
-    // itemThree.setAttribute('id', id + 2);
-    // itemThree.setAttribute('style', 'background-image: url(images/air.jpg)');
-
-    
-    // //four
-    // slashItemFour.classList.add('fa-solid', 'fa-store-slash');
-    // stockOutFour.classList.add('stock');
-    // itemMenuFour.classList.add('items-menu');
-    // itemNameFour.classList.add('items-name');
-    // upperFour.classList.add('slash-parent');
-    // infoFour.classList.add('fa-solid', 'fa-circle-info');
-    // cancelFour.classList.add('fa-solid', 'fa-xmark');
-    // infoFour.setAttribute('data-target','.details-page')
-    // itemFour.classList.add('items', 'sample-four');
-    // itemFour.setAttribute('id', id + 3);
-    // itemFour.setAttribute('style', 'background-image: url(images/apple.jpg)');
-
-    
-
-    // // append each to each
-    // //one
-    // upperOne.appendChild(slashItemOne);
-    // itemMenuOne.append(itemNameOne, infoOne, cancelOne);
-    // itemOne.append(upperOne, stockOutOne, itemMenuOne);
-
-    // //two
-    // upperTwo.appendChild(slashItemTwo);
-    // itemMenuTwo.append(itemNameTwo, infoTwo, cancelTwo);
-    // itemTwo.append(upperTwo, stockOutTwo, itemMenuTwo);
-    // list.append(itemTwo);
-
-    // //three
-    // upperThree.appendChild(slashItemThree);
-    // itemMenuThree.append(itemNameThree, infoThree, cancelThree);
-    // itemThree.append(upperThree, stockOutThree, itemMenuThree);
-
-
-    // //four
-    // upperFour.appendChild(slashItemFour);
-    // itemMenuFour.append(itemNameFour, infoFour, cancelFour);
-    // itemFour.append(upperFour, stockOutFour, itemMenuFour);
-
-    // list.append(itemOne, itemTwo, itemThree, itemFour);
-
-    // const items = document.querySelectorAll('.items');
-    // items.forEach(item => {
-    //     item.addEventListener('mouseover', () => {
-    //         item.firstElementChild.firstElementChild.style.visibility = 'visible';
-    //     });
-    //     item.addEventListener('mouseout', () => {
-    //         item.firstElementChild.firstElementChild.style.visibility = 'hidden';
-    //     });
-
-    // });
-
 };
 
 samplesDisplay();
 
+// this is to display sample details directly from javascript
+
+const sampleDetailsDisplay = () => {
+    return(detailsList.innerHTML = basket.map((sample) => {
+        let { id, item, name, image, desc } = sample;
+        // console.log(basket);
+        let search = basket.find((sample) => sample.id === id);
+        // console.log(id);      
+        return  `
+        <div id = sample-details-${id} class="big-box">
+          <div class="left" >
+             <div class="imagery" style = "background-image : url(${image})"></div>
+          <h3 class="name">${name}</h3>
+        </div>
+
+        <div class="right">
+          <div class="right-above">
+            <i class="fa-regular fa-square-check"></i>
+            <i class="fa-solid fa-ellipsis"></i>
+            <i onclick = "decrement(${id})" class="fa-solid fa-minus fas"></i>
+            <i onclick = "increment(${id})" class="fa-solid fa-plus fap"></i>
+          </div>
+
+          <h3 class="description">${desc}</h3>
+
+          <div class="right-below">
+            <div class="quantity">Quantity</div>
+            <div id = ${id} class="counter">${search.item === undefined? 0: search.item}</div>
+          </div>
+        </div>
+      </div>
+        `
+    }).join(''));
+};
+
+sampleDetailsDisplay();
+
+const prevent =  (e) => {
+    e.preventDefault()
+};
 // this is to add product image, product name to the home page
 const addBtn = document.querySelector('#addBtn');
-let idPlus = 3
 
+const plusItemsToPage = (x) => {
+    let { id, name, desc, image } = x;
+    let nameValue = document.querySelector('#productName').value.trim();
+    let descriptionValue = document.querySelector('#productDescription').value.trim();
+    let itemId =`sample-${nameValue}`.replaceAll(' ', '');
+    let img = `${uploaded_image}`;
 
-const plusItemsToPage = (e) => {
-    e.preventDefault();
-
-    const nameValue = document.querySelector('#productName').value.trim();
-    const descriptionValue = document.querySelector('#productDescription').value.trim();
-
-    idPlus++;
-    let updateId = idPlus;
-    if (nameValue.length === 0 || nameValue.length > 15) {
+    if(nameValue.length === 0 || nameValue.length > 15 || descriptionValue.length === 0 || descriptionValue.length > 200 || displayImage.style.backgroundImage === ''){
         return;
-        
-    } else if (descriptionValue.length === 0 || descriptionValue.length > 200) {
-        return
-    }else if (displayImage.style.backgroundImage !== ''
-    ){
-        // create elements
-        const items = document.createElement('div');
-        const upper = document.createElement('div');
-        const slashItem = document.createElement('i');
-        const stockOut = document.createElement('h2');
-        const itemsMenu = document.createElement('div');
-        const itemsName = document.createElement('h3');
-        const info = document.createElement('i');
-        const cancel = document.createElement('i');
+     }
+     let search = samplesData.find((x) => x.id === itemId)
+     if (search === undefined) {
 
-        //add text contents
-        itemsName.textContent = nameValue.toLowerCase();
-        stockOut.textContent = 'Out of Stock';
+            samplesData.push({
+                id: itemId,
+                name: nameValue,
+                desc: descriptionValue,
+                image: img,
+            });
 
-        // create classes
-        items.classList.add('items');
-        slashItem.classList.add('fa-solid', 'fa-store-slash');
-        stockOut.classList.add('stock');
-        itemsMenu.classList.add('items-menu');
-        itemsName.classList.add('items-name');
-        upper.classList.add('slash-parent');
-        info.classList.add('fa-solid', 'fa-circle-info');
-        cancel.classList.add('fa-solid', 'fa-xmark');
-        info.setAttribute('data-target','.details-page');
+            localStorage.setItem('samples', JSON.stringify(samplesData));
+          // create elements
+          const items = document.createElement('div');
+          const upper = document.createElement('div');
+          const slashItem = document.createElement('i');
+          const stockOut = document.createElement('h2');
+          const itemsMenu = document.createElement('div');
+          const itemsName = document.createElement('h3');
+          const info = document.createElement('i');
+          const cancel = document.createElement('i');
+  
+          //add text contents
+          itemsName.textContent = nameValue.toLowerCase();
+          stockOut.textContent = 'Out of Stock';
+  
+          // create classes
+          items.classList.add('items');
+          slashItem.classList.add('fa-solid', 'fa-store-slash');
+          stockOut.classList.add('stock');
+          itemsMenu.classList.add('items-menu');
+          itemsName.classList.add('items-name');
+          upper.classList.add('slash-parent');
+          info.classList.add('fa-solid', 'fa-circle-info');
+          cancel.classList.add('fa-solid', 'fa-xmark');
+          info.setAttribute('data-target','.details-page');
+          items.setAttribute('id', itemId);
+          //append elements to elements
+          upper.appendChild(slashItem);
+          itemsMenu.append(itemsName, info, cancel);
+          items.append(upper, stockOut, itemsMenu);
+          list.appendChild(items);
 
-    
-        items.setAttribute('id', updateId)
-        //append elements to elements
-        upper.appendChild(slashItem);
-        itemsMenu.append(itemsName, info, cancel);
-        items.append(upper, stockOut, itemsMenu);
-        list.appendChild(items);
-
-        // theItems.forEach((item) => {
-        //     console.log(item.firstElementChild.nextElementSibling.firstElementChild.textContent)
-        // })
-        // list.appendChild(items);
-       
+           
         items.style.backgroundImage =  `url(${uploaded_image})`;
         upper.addEventListener('mouseover', () => {
             upper.firstElementChild.style.visibility = 'visible';
@@ -394,92 +297,77 @@ const plusItemsToPage = (e) => {
         upper.addEventListener('mouseout', () => {
             upper.firstElementChild.style.visibility = 'hidden';
         });
-
-        let sample = JSON.parse(localStorage.getItem('sample'));
-        
-        let newItems = {
-            id: updateId,
-            name: nameValue,
-            description: descriptionValue,
-            imageUrl: `url(${uploaded_image})`
-        }
-
-        sample.push(newItems);
-        
-        localStorage.setItem('sample', JSON.stringify(sample));
-
-    }
-}
-
-
-
-const plusItemsToPageDetails = () => {
-    const nameValue = document.querySelector('#productName').value.trim();
-    const descriptionValue = document.querySelector('#productDescription').value.trim();
-    if (nameValue.length === 0 || nameValue.length > 15) {
+     } else {
         return;
-    } else if (descriptionValue.length === 0 || descriptionValue.length > 200) {
+     }
+    
+};
+
+let data = 0;
+const plusItemsToPageDetails = (prop) => {
+    let { id, name, desc, image, item} = prop;
+    let nameValue = document.querySelector('#productName').value.trim();
+    let counterId = nameValue.replaceAll(' ', '');
+    let descriptionValue = document.querySelector('#productDescription').value.trim();
+    let img = `${uploaded_image}`;
+    newItems = {
+        id : counterId,
+        item: 0,
+        name : nameValue,
+        desc : descriptionValue,
+        image: img,
+    };
+    
+    data++;
+
+     if(nameValue.length === 0 || nameValue.length > 15 || descriptionValue.length === 0 || descriptionValue.length > 200 || displayImage.style.backgroundImage === ''){
         return;
-    }else if (displayImage.style.backgroundImage !== ''
-    ) {
-        // create elements
+     } 
+     let search = basket.find((x) => x.id == counterId);
+     console.log(search);
 
-        const box = document.createElement('div');
-        const left = document.createElement('div');
-        const imagery = document.createElement('div');
-        const name = document.createElement('h3');
-        const right = document.createElement('div');
-        const check = document.createElement('i');
-        const ellipsis = document.createElement('i');
-        const minus = document.createElement('i');
-        const plus = document.createElement('i');
-        const rightAbove = document.createElement('div');
-        const description =  document.createElement('h3');
-        const rightBelow =  document.createElement('div');
-        const quantity = document.createElement('div');
-        const counter = document.createElement('div');
+     if (search === undefined) {
+        basket.push(newItems);
+        localStorage.setItem('data', JSON.stringify(basket));
 
-        //add text contents
-        name.textContent = nameValue.toLowerCase();
-        description.textContent = descriptionValue.toLowerCase();
-        quantity.textContent = 'Quantity';
-        counter.textContent = '1';
-
-        //add classes
-        box.classList.add('big-box');
-        left.classList.add('left');
-        imagery.classList.add('imagery');
-        name.classList.add('name');
-        right.classList.add('right');
-        description.classList.add('description');
-        rightBelow.classList.add('right-below');
-        rightAbove.classList.add('right-above')
-        check.classList.add('fa-regular', 'fa-square-check');
-        ellipsis.classList.add('fa-solid', 'fa-ellipsis');
-        minus.classList.add('fa-solid', 'fa-minus', 'fas');
-        plus.classList.add('fa-solid', 'fa-plus', 'fap');
-        quantity.classList.add('quantity');
-        counter.classList.add('counter');
-
-        //append elements to elements
-        left.append(imagery, name);
-        rightAbove.append(check, ellipsis, minus, plus)
-        rightBelow.append(quantity, counter);
-        right.append(rightAbove, description, rightBelow);
-        box.append(left, right);
-        detailsList.appendChild(box);
-
-        imagery.style.backgroundImage =  `url(${uploaded_image})`;
-        let sample = JSON.parse(localStorage.getItem('sample'));
-
-
-        localStorage.setItem('sample', JSON.stringify(sample));
-
-    }
-}
+        return detailsList.innerHTML += ( 
+            `
+            <div class="big-box">
+            <div class="left">
+                <div class="imagery" style = "background-image : url(${img})"></div>
+                <h3 class="name">${nameValue}</h3>
+            </div>
+    
+            <div class="right">
+                <div class="right-above">
+                <i class="fa-regular fa-square-check"></i>
+                <i class="fa-solid fa-ellipsis"></i>
+                <i onclick = "decrement(${counterId})" class="fa-solid fa-minus fas"></i>
+                <i onclick = "increment(${counterId})" class="fa-solid fa-plus fap"></i>
+                </div>
+    
+                <h3 class="description">${descriptionValue}</h3>
+    
+                <div class="right-below">
+                <div class="quantity">Quantity</div>
+                <div id= ${counterId} class="counter">${search === undefined? 0: search.item}
+                </div>
+                </div>
+            </div>
+            </div>
+             ` 
+         );
+    } 
+        else {
+            return;
+        };
+};
+    
 
 addBtn.addEventListener('click', plusItemsToPage);
 addBtn.addEventListener('click', plusItemsToPageDetails);
+addBtn.addEventListener('click', prevent);
+
 
 
 
