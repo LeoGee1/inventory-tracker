@@ -212,6 +212,7 @@ const sampleDetailsDisplay = () => {
         <div class="right">
           <div class="right-above">
             <i class="fa-regular fa-square-check"></i>
+            <i class="fa-solid fa-xmark ex"></i>
             <i class="fa-solid fa-ellipsis"></i>
             <i onclick = "decrement(${id})" class="fa-solid fa-minus fas"></i>
             <i onclick = "increment(${id})" class="fa-solid fa-plus fap"></i>

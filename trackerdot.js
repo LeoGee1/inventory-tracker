@@ -53,9 +53,7 @@ let decrement = (id) => {
     else {
         search.item -= 1
     }
-    document.getElementById(selectedItem.id).innerHTML = search.item
-    basket = basket.filter((sample) => sample.item > 0);
-    
+    document.getElementById(selectedItem.id).innerHTML = search.item    
     localStorage.setItem('data', JSON.stringify(basket));
 
 };
@@ -64,7 +62,8 @@ let decrement = (id) => {
 //this is to edit our description details and turn it into and input box
 detailsList.addEventListener('click', (e) => { 
 if(e.target.className === 'fa-solid fa-ellipsis') {
-    
+    e.target.previousElementSibling.style.display = 'none'
+
     let details = e.target.parentElement.nextElementSibling;
     let content = e.target.parentElement.nextElementSibling.textContent;        
     let newDetails = document.createElement('TEXTAREA');
@@ -73,11 +72,12 @@ if(e.target.className === 'fa-solid fa-ellipsis') {
 
     details.parentElement.replaceChild(newDetails, details);
     newDetails.textContent = content;
-    e.target.previousElementSibling.style.display = 'block';
+    e.target.previousElementSibling.previousElementSibling.style.display = 'block';
  }
 
  // to update edits...
  if(e.target.className === 'fa-regular fa-square-check') {
+    e.target.nextElementSibling.style.display = 'block'
     let newDetails = e.target.parentElement.nextElementSibling;
     let content = e.target.parentElement.nextElementSibling.value;
     let productName = newDetails.parentElement.previousElementSibling.lastElementChild.innerHTML;
@@ -89,11 +89,75 @@ if(e.target.className === 'fa-solid fa-ellipsis') {
     details.textContent = content;
     e.target.style.display = 'none';
 
+
     if (search !== undefined){
         search.desc = content
     }
+  
     localStorage.setItem('data', JSON.stringify(basket));
     }
+    if (e.target.className === 'fa-solid fa-xmark ex') {
+        let item = e.target.parentElement.parentElement.parentElement;
+        let track = e.target.parentElement.parentElement.previousElementSibling.lastElementChild.textContent
+        detailsList.removeChild(item);
+        basket = basket.filter((x) => x.name !== track);
+        localStorage.setItem('data', JSON.stringify(basket));
+    };
 });
+
+// this is to search fo items in the dom
+const searchBar = document.querySelector('#headerInput');
+const replicateBar = document.querySelector('#headerInputTwo');
+const detailsSearchBar = document.querySelector('#headerInputThree');
+const productBar = document.querySelector('#productName')
+
+searchBar.addEventListener('keyup', (e) => {
+    let term = e.target.value.toLowerCase();
+    let items = document.querySelectorAll('.items');
+    items.forEach((item) => {
+        let name = item.lastElementChild.firstElementChild.textContent;
+        if(name.toLowerCase().indexOf(term) !== -1) {
+            item.style.display = 'flex'
+        } else {
+            item.style.display = 'none'
+        };
+    });
+});
+
+//also the same search
+detailsSearchBar.addEventListener('keyup', (e) => {
+    let term = e.target.value.toLowerCase();
+    let items = document.querySelectorAll('.items');
+    items.forEach((item) => {
+        let name = item.firstElementChild.nextElementChild.textContent;
+        if (name.toLowerCase().indexOf(term) !== -1) {
+            item.style.display = 'flex'
+        } else {
+            item.style.display = 'none'
+        };
+    });
+});
+
+replicateBar.addEventListener('keyup', (e) => {
+    let term = e.target.value.toLowerCase();
+    productBar.value = term;
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

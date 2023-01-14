@@ -6,6 +6,9 @@ body, h2, p, li, ul, a{
     box-sizing: border-box;
     text-decoration: none;
 }
+a {
+    color: white;
+}
 body {
     background-color: #efe9eb;
     min-width: 265px;
@@ -98,7 +101,7 @@ body {
 }
 .items {
     flex-basis: 115px;
-    /* min-width: 115px; */
+    max-width: 250px;
     flex-grow: 1;
     height: 200px;
     border-radius: 5px;
