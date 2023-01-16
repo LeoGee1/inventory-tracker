@@ -342,6 +342,7 @@ const plusItemsToPageDetails = (prop) => {
             <div class="right">
                 <div class="right-above">
                 <i class="fa-regular fa-square-check"></i>
+                <i class="fa-solid fa-xmark ex"></i>
                 <i class="fa-solid fa-ellipsis"></i>
                 <i onclick = "decrement(${counterId})" class="fa-solid fa-minus fas"></i>
                 <i onclick = "increment(${counterId})" class="fa-solid fa-plus fap"></i>
