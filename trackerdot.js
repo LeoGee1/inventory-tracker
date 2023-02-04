@@ -112,8 +112,8 @@ const detailsSearchBar = document.querySelector('#headerInputThree');
 const productBar = document.querySelector('#productName')
 
 searchBar.addEventListener('keyup', (e) => {
-    let term = e.target.value.toLowerCase();
-    let items = document.querySelectorAll('.items');
+    const term = e.target.value.toLowerCase();
+    const items = document.querySelectorAll('.items');
     items.forEach((item) => {
         let name = item.lastElementChild.firstElementChild.textContent;
         if(name.toLowerCase().indexOf(term) !== -1) {
@@ -126,8 +126,8 @@ searchBar.addEventListener('keyup', (e) => {
 
 //also the same search
 detailsSearchBar.addEventListener('keyup', (e) => {
-    let term = e.target.value.toLowerCase();
-    let items = document.querySelectorAll('.items');
+    const term = e.target.value.toLowerCase();
+    const items = document.querySelectorAll('.items');
     items.forEach((item) => {
         let name = item.firstElementChild.nextElementChild.textContent;
         if (name.toLowerCase().indexOf(term) !== -1) {
@@ -139,7 +139,7 @@ detailsSearchBar.addEventListener('keyup', (e) => {
 });
 
 replicateBar.addEventListener('keyup', (e) => {
-    let term = e.target.value.toLowerCase();
+    const term = e.target.value.toLowerCase();
     productBar.value = term;
 
 })
